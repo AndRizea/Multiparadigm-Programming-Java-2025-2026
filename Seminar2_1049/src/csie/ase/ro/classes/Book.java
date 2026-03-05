@@ -17,7 +17,7 @@ public class Book {
 	public Book(String title, int noPages, int[] ratings, Genre genre) {
 		this.title = title;
 		this.noPages = noPages;
-		this.ratings = ratings;
+		this.setRatings(ratings);
 		this.genre = genre;
 	}
 	
@@ -75,6 +75,19 @@ public class Book {
 		for(int i =0; i< this.ratings.length; i++) {
 			System.out.print(ratings[i] + " ");
 		}
+	}
+	
+	public float getAverageRating() {
+		float average = 0;
+		int sum = 0;
+		
+		for(int i = 0; i< this.ratings.length; i++) {
+			sum += ratings[i];
+		}
+		
+		average = (float) sum / this.ratings.length;
+		
+		return average;
 	}
 
 	@Override
