@@ -1,7 +1,9 @@
 package csie.ase.ro.classes;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -47,6 +49,15 @@ public class Student implements Serializable {
 		ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 		objectOutputStream.writeObject(this);
 		objectOutputStream.close();
+	}
+	
+	public void deserialize() throws IOException, ClassNotFoundException {
+		FileInputStream fileInputStream = new FileInputStream("student.data");
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+		Student s = (Student) objectInputStream.readObject();
+		this.name = s.name;
+		this.average = s.average;
+		objectInputStream.close();
 	}
 
 }

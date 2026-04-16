@@ -90,6 +90,17 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		// deserialize an object
+		Student deserializedStudent = new Student();
+		try {
+			deserializedStudent.deserialize();
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Deserialized student: " + deserializedStudent);
+		
 
 	}
 
